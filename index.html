@@ -111,11 +111,25 @@
       <tfoot>
         <tr>
           <td colspan="3">總金額</td>
+          
           <td id="total">0</td>
         </tr>
       </tfoot>
     </table>
+    
   </div>
+  <div style="text-align: center; margin-top: 20px;">
+  <button onclick="resetAll()" style="
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;">
+    🔁 清除所有數量
+  </button>
+</div>
 
   <script>
     const items = [
@@ -173,6 +187,13 @@
       });
       document.getElementById("total").textContent = total;
     }
+    function resetAll() {
+  items.forEach((_, i) => {
+    document.getElementById(`qty-${i}`).value = 0;
+    document.getElementById(`subtotal-${i}`).textContent = 0;
+  });
+  updateTotal();
+}
   </script>
 </body>
 </html>
