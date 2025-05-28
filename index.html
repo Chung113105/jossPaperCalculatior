@@ -140,9 +140,9 @@
         <td>${item.price}</td>
         <td>
           <div class="qty-controls">
-            <button onclick="adjustQty(${index}, -1)">－</button>
-            <input type="number" min="0" value="0" id="qty-${index}" oninput="updateSubtotal(${index})">
             <button onclick="adjustQty(${index}, 1)">＋</button>
+            <input type="number" min="0" value="0" id="qty-${index}" oninput="updateSubtotal(${index})">
+            <button onclick="adjustQty(${index}, -1)">－</button>
           </div>
         </td>
         <td id="subtotal-${index}">0</td>
