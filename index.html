@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>金紙計算器</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      overflow-x: auto;
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f1f1f1;
+      font-weight: bold;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .qty-controls button {
+      padding: 5px 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .qty-controls button:hover {
+      background-color: #2980b9;
+    }
+
+    .qty-controls input[type="number"] {
+      width: 60px;
+      text-align: center;
+      font-size: 16px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    tfoot td {
+      font-weight: bold;
+      font-size: 18px;
+      background-color: #f9f9f9;
+    }
+
+    @media (max-width: 600px) {
+      .qty-controls {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .qty-controls button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>金紙計算器</h2>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>品項</th>
+          <th>價格（元）</th>
+          <th>數量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- 動態插入資料 -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">總金額</td>
+          <td id="total">0</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script>
+    const items = [
+      { name: "地藏王菩薩金紙", price: 500 },
+      { name: "五營叩求金紙", price: 350 },
+      { name: "壽金", price: 50 },
+      { name: "四方金", price: 15 },
+      { name: "銀紙", price: 15 },
+      { name: "蓮花無座", price: 50 },
+      { name: "蓮花有座", price: 75 },
+      { name: "更衣", price: 50 },
+      { name: "白錢", price: 50 },
+      { name: "金錢", price: 50 }
+    ];
+
+    const tbody = document.getElementById("table-body");
+
+    items.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.price}</td>
+        <td>
+          <div class="qty-controls">
+            <button onclick="adjustQty(${index}, -1)">－</button>
+            <input type="number" min="0" value="0" id="qty-${index}" oninput="updateSubtotal(${index})">
+            <button onclick="adjustQty(${index}, 1)">＋</button>
+          </div>
+        </td>
+        <td id="subtotal-${index}">0</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    function adjustQty(index, delta) {
+      const input = document.getElementById(`qty-${index}`);
+      let current = parseInt(input.value) || 0;
+      current = Math.max(0, current + delta);
+      input.value = current;
+      updateSubtotal(index);
+    }
+
+    function updateSubtotal(index) {
+      const qty = parseInt(document.getElementById(`qty-${index}`).value) || 0;
+      const price = items[index].price;
+      const subtotal = qty * price;
+      document.getElementById(`subtotal-${index}`).textContent = subtotal;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let total = 0;
+      items.forEach((_, i) => {
+        total += parseInt(document.getElementById(`subtotal-${i}`).textContent) || 0;
+      });
+      document.getElementById("total").textContent = total;
+    }
+  </script>
+</body>
+</html>
