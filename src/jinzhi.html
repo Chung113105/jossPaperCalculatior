@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>祭祀文化網站 - 首頁</title>
+    <title>金紙類 - 祭祀文化</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -27,33 +27,22 @@
         header {
             background: linear-gradient(135deg, #8e44ad, #9b59b6);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             position: relative;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         h1 {
             font-size: 2.8rem;
             margin: 0;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header-subtitle {
-            font-size: 1.1rem;
-            margin-top: 15px;
-            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         /* Navigation styling */
         nav {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -112,54 +101,82 @@
         /* Content styling */
         .content {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 30px auto;
             padding: 0 20px;
         }
         
-        /* Categories grid */
+        /* Card styling */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .category-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
             display: block;
-            padding: 30px 20px;
-            text-align: center;
         }
         
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
         
         .card-icon {
-            margin-bottom: 20px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8e44ad;
+            color: white;
         }
         
         .card-icon i {
-            font-size: 3.5rem;
-            color: #8e44ad;
+            font-size: 3rem;
         }
         
         .category-card h3 {
+            padding: 20px 20px 10px;
             font-size: 1.4rem;
             color: #333;
-            margin-bottom: 10px;
         }
         
         .category-card p {
-            color: #777;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            padding: 0 20px 20px;
+            color: #666;
+        }
+        
+        .category-card .price {
+            padding: 0 20px 10px;
+            font-weight: bold;
+            color: #8e44ad;
+        }
+        
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #8e44ad;
+            font-weight: 500;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
         }
         
         /* Footer styling */
@@ -213,14 +230,30 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
+        .section-title {
+            margin: 20px 0;
+            color: #333;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: #8e44ad;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 1rem;
+                font-size: 2rem;
             }
             
             .nav-container {
@@ -263,10 +296,8 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-content">
-            <h1>祭祀文化網站</h1>
-            <p class="header-subtitle">傳承傳統祭祀文化，記錄各種儀式與祭祀用品</p>
-        </div>
+        <h1>金紙類</h1>
+        <p>各種金紙數量與價格參考</p>
     </header>
     
     <!-- Navigation -->
@@ -275,23 +306,23 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-container" id="navContainer">
-            <a href="index.html" class="active">
+            <a href="index.html">
                 <i class="fas fa-home"></i>
                 首頁
             </a>
-            <a href="src/wuxing.html">
+            <a href="wuxing.html">
                 <i class="fas fa-wind"></i>
                 處理無形事
             </a>
-            <a href="src/jinzhi.html">
+            <a href="jinzhi.html" class="active">
                 <i class="fas fa-file-invoice-dollar"></i>
                 金紙類
             </a>
-            <a href="src/bagua.html">
+            <a href="bagua.html">
                 <i class="fas fa-yin-yang"></i>
                 八卦、九色蓮花相關
             </a>
-            <a href="src/xiangan.html">
+            <a href="xiangan.html">
                 <i class="fas fa-burn"></i>
                 擺香案類
             </a>
@@ -300,41 +331,67 @@
     
     <!-- Content -->
     <div class="content">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> 返回首頁
+        </a>
+        
+        <h2 class="section-title">金紙種類及單價</h2>
         <div class="categories-grid">
-            <!-- 處理無形事卡片 -->
-            <a href="src/wuxing.html" class="category-card">
+            <a href="jinzhi/jinzhi_table.html" class="category-card">
                 <div class="card-icon">
-                    <i class="fas fa-wind"></i>
+                    <i class="fas fa-table"></i>
                 </div>
-                <h3>處理無形事</h3>
-                <p>詳細流程與儀式步驟說明</p>
+                <h3>金紙種類一覽表</h3>
+                <p>所有金紙種類、單價與數量詳細資訊</p>
+                <p>點擊查看完整表格</p>
+            </a>
+        </div>
+        
+        <h2 class="section-title">常用金紙組合</h2>
+        <div class="categories-grid">
+            <a href="jinzhi/wuying.html" class="category-card">
+                <div class="card-icon">
+                    <i class="fas fa-gopuram"></i>
+                </div>
+                <h3>外五營叩求單金紙</h3>
+                <p class="price">350元/份</p>
+                <p>點擊查看詳細內容</p>
             </a>
             
-            <!-- 金紙類卡片 -->
-            <a href="src/jinzhi.html" class="category-card">
+            <a href="jinzhi/dizang.html" class="category-card">
                 <div class="card-icon">
-                    <i class="fas fa-file-invoice-dollar"></i>
+                    <i class="fas fa-place-of-worship"></i>
                 </div>
-                <h3>金紙類</h3>
-                <p>各種金紙種類與用途介紹</p>
+                <h3>地藏王菩薩金紙</h3>
+                <p class="price">500元/份</p>
+                <p>點擊查看詳細內容</p>
             </a>
             
-            <!-- 八卦卡片 -->
-            <a href="src/bagua.html" class="category-card">
+            <a href="jinzhi/shoujing.html" class="category-card">
                 <div class="card-icon">
-                    <i class="fas fa-yin-yang"></i>
+                    <i class="fas fa-hands"></i>
                 </div>
-                <h3>八卦、九色蓮花</h3>
-                <p>相關資訊與照片展示</p>
+                <h3>收驚/車魂的金紙</h3>
+                <p class="price">200元/份</p>
+                <p>點擊查看詳細內容</p>
             </a>
             
-            <!-- 擺香案卡片 -->
-            <a href="src/xiangan.html" class="category-card">
+            <a href="jinzhi/kaojun.html" class="category-card">
                 <div class="card-icon">
-                    <i class="fas fa-burn"></i>
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>擺香案類</h3>
-                <p>香案擺放與使用說明</p>
+                <h3>犒軍金紙</h3>
+                <p>內外營、地藏王、無形</p>
+                <p>點擊查看詳細內容</p>
+            </a>
+            
+            <a href="jinzhi/tuanbai.html" class="category-card">
+                <div class="card-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>初一十五團拜金紙</h3>
+                <p>中殿、王爺殿、大聖殿等</p>
+                <p>點擊查看詳細內容</p>
             </a>
         </div>
     </div>

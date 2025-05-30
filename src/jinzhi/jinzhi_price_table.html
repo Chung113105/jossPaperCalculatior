@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>祭祀文化網站 - 首頁</title>
+    <title>金紙種類及單價 - 祭祀文化</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -27,33 +27,22 @@
         header {
             background: linear-gradient(135deg, #8e44ad, #9b59b6);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
             position: relative;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         h1 {
             font-size: 2.8rem;
             margin: 0;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header-subtitle {
-            font-size: 1.1rem;
-            margin-top: 15px;
-            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         /* Navigation styling */
         nav {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -112,54 +101,113 @@
         /* Content styling */
         .content {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 30px auto;
             padding: 0 20px;
         }
         
-        /* Categories grid */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .category-card {
+        /* Card styling */
+        .detail-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            padding: 30px 20px;
-            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
         
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .card-header {
+            background-color: #8e44ad;
+            color: white;
+            padding: 20px;
         }
         
-        .card-icon {
-            margin-bottom: 20px;
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
         }
         
-        .card-icon i {
-            font-size: 3.5rem;
+        .card-header h2 i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        /* Table styling */
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .price-column {
             color: #8e44ad;
+            font-weight: 600;
         }
         
-        .category-card h3 {
+        .info-box {
+            background-color: #f8f8f8;
+            border-left: 4px solid #8e44ad;
+            padding: 15px;
+            margin: 15px 0 25px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .subheading {
+            color: #8e44ad;
+            margin: 30px 0 15px;
             font-size: 1.4rem;
-            color: #333;
-            margin-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
         
-        .category-card p {
-            color: #777;
-            font-size: 0.95rem;
-            line-height: 1.5;
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #8e44ad;
+            font-weight: 500;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
         }
         
         /* Footer styling */
@@ -216,11 +264,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 1rem;
+                font-size: 2rem;
             }
             
             .nav-container {
@@ -263,10 +307,8 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="header-content">
-            <h1>祭祀文化網站</h1>
-            <p class="header-subtitle">傳承傳統祭祀文化，記錄各種儀式與祭祀用品</p>
-        </div>
+        <h1>金紙種類及單價</h1>
+        <p>完整金紙資訊一覽表</p>
     </header>
     
     <!-- Navigation -->
@@ -275,23 +317,23 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="nav-container" id="navContainer">
-            <a href="index.html" class="active">
+            <a href="../index.html">
                 <i class="fas fa-home"></i>
                 首頁
             </a>
-            <a href="src/wuxing.html">
+            <a href="../wuxing.html">
                 <i class="fas fa-wind"></i>
                 處理無形事
             </a>
-            <a href="src/jinzhi.html">
+            <a href="../jinzhi.html" class="active">
                 <i class="fas fa-file-invoice-dollar"></i>
                 金紙類
             </a>
-            <a href="src/bagua.html">
+            <a href="../bagua.html">
                 <i class="fas fa-yin-yang"></i>
                 八卦、九色蓮花相關
             </a>
-            <a href="src/xiangan.html">
+            <a href="../xiangan.html">
                 <i class="fas fa-burn"></i>
                 擺香案類
             </a>
@@ -300,42 +342,110 @@
     
     <!-- Content -->
     <div class="content">
-        <div class="categories-grid">
-            <!-- 處理無形事卡片 -->
-            <a href="src/wuxing.html" class="category-card">
-                <div class="card-icon">
-                    <i class="fas fa-wind"></i>
+        <a href="../jinzhi.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> 返回金紙類
+        </a>
+        
+        <div class="detail-card">
+            <div class="card-header">
+                <h2><i class="fas fa-table"></i> 金紙種類及單價表</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-box">
+                    <p>四方金、銀紙一小件的定義： 一大件的1/5</p>
                 </div>
-                <h3>處理無形事</h3>
-                <p>詳細流程與儀式步驟說明</p>
-            </a>
-            
-            <!-- 金紙類卡片 -->
-            <a href="src/jinzhi.html" class="category-card">
-                <div class="card-icon">
-                    <i class="fas fa-file-invoice-dollar"></i>
+                
+                <h3 class="subheading">廠商與數量對照表</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>廠商</th>
+                                <th>一小件數量</th>
+                                <th>外觀特徵</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>東裕</td>
+                                <td>15個</td>
+                                <td>紙包</td>
+                            </tr>
+                            <tr>
+                                <td>小p</td>
+                                <td>10個</td>
+                                <td>箱裝</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <h3>金紙類</h3>
-                <p>各種金紙種類與用途介紹</p>
-            </a>
-            
-            <!-- 八卦卡片 -->
-            <a href="src/bagua.html" class="category-card">
-                <div class="card-icon">
-                    <i class="fas fa-yin-yang"></i>
+                
+                <h3 class="subheading">金紙單價一覽表</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>金紙種類</th>
+                                <th>單價</th>
+                                <th>計量單位</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>壽金</td>
+                                <td class="price-column">50元</td>
+                                <td>個</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>四方金</td>
+                                <td class="price-column">15元</td>
+                                <td>個</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>銀紙</td>
+                                <td class="price-column">15元</td>
+                                <td>個</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>蓮花（無座）</td>
+                                <td class="price-column">50元</td>
+                                <td>朵</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>蓮花（有座）</td>
+                                <td class="price-column">100元</td>
+                                <td>朵</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>金錢</td>
+                                <td class="price-column">50元</td>
+                                <td>刀</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>白錢</td>
+                                <td class="price-column">50元</td>
+                                <td>刀</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>更衣</td>
+                                <td class="price-column">50元</td>
+                                <td>刀</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <h3>八卦、九色蓮花</h3>
-                <p>相關資訊與照片展示</p>
-            </a>
-            
-            <!-- 擺香案卡片 -->
-            <a href="src/xiangan.html" class="category-card">
-                <div class="card-icon">
-                    <i class="fas fa-burn"></i>
-                </div>
-                <h3>擺香案類</h3>
-                <p>香案擺放與使用說明</p>
-            </a>
+         
+                
+            </div>
         </div>
     </div>
     
