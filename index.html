@@ -1,199 +1,721 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>金紙計算器</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8f9fa;
-      padding: 20px;
-      color: #333;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2c3e50;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      overflow-x: auto;
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px 8px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f1f1f1;
-      font-weight: bold;
-    }
-
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .qty-controls button {
-      padding: 5px 10px;
-      font-size: 16px;
-      border: none;
-      background-color: #3498db;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .qty-controls button:hover {
-      background-color: #2980b9;
-    }
-
-    .qty-controls input[type="number"] {
-      width: 60px;
-      text-align: center;
-      font-size: 16px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    tfoot td {
-      font-weight: bold;
-      font-size: 18px;
-      background-color: #f9f9f9;
-    }
-
-    @media (max-width: 600px) {
-      .qty-controls {
-        flex-direction: column;
-        gap: 3px;
-      }
-
-      .qty-controls button {
-        width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祭祀文化 - 現代風格</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Header styling */
+        header {
+            background: linear-gradient(135deg, #ff3b30, #8e44ad);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header.with-image {
+            padding: 0;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header.with-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation styling */
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* 置中對齊 */
+            flex-wrap: wrap; /* 在小屏幕上可以換行 */
+        }
+        
+        nav a {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        nav a i {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        nav a:hover {
+            background-color: #f0f0f0;
+            color: #ff3b30;
+            border-bottom: 3px solid #ff3b30;
+        }
+        
+        nav a.active {
+            color: #8e44ad;
+            border-bottom: 3px solid #8e44ad;
+        }
+        
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        /* Content styling */
+        .content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        /* Card styling */
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: #8e44ad;
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Category cards grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .category-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            color: #8e44ad;
+            margin-bottom: 10px;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .category-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Photo grid styling */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .photo-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .photo-info {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .photo-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        /* Process steps */
+        .process-step {
+            background-color: white;
+            border-left: 4px solid #8e44ad;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: #8e44ad;
+            font-weight: 500;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* Section styling */
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            list-style-type: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                display: none;
+            }
+            
+            .nav-container.show {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+                width: 100%;
+                text-align: right;
+            }
+            
+            nav a {
+                width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            nav a i {
+                margin: 0 10px 0 0;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h2>金紙計算器</h2>
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>品項</th>
-          <th>價格（元）</th>
-          <th>數量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody id="table-body">
-        <!-- 動態插入資料 -->
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3">總金額</td>
-          
-          <td id="total">0</td>
-        </tr>
-      </tfoot>
-    </table>
+    <!-- Header with image option -->
+    <header class="with-image">
+        <!-- 將在這裡放置背景圖片 -->
+        <img src="https://via.placeholder.com/1920x600" alt="祭祀文化背景">
+        <div class="header-overlay">
+            <h1>祭祀文化</h1>
+            <p>傳統與現代的完美結合</p>
+        </div>
+    </header>
     
-  </div>
-  <div style="text-align: center; margin-top: 20px;">
-  <button onclick="resetAll()" style="
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;">
-    🔁 清除所有數量
-  </button>
-</div>
+    <!-- Navigation -->
+    <nav>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-container" id="navContainer">
+            <a href="#" class="active" data-section="home">
+                <i class="fas fa-home"></i>
+                首頁
+            </a>
+            <a href="wuxing.html" >
+                <i class="fas fa-wind"></i>
+                處理無形事
+            </a>
+            <a href="#" data-section="jinzhi">
+                <i class="fas fa-file-invoice-dollar"></i>
+                金紙類
+            </a>
+            <a href="#" data-section="bagua">
+                <i class="fas fa-yin-yang"></i>
+                八卦、九色蓮花相關
+            </a>
+            <a href="#" data-section="xiangan">
+                <i class="fas fa-burn"></i>
+                擺香案類
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Content sections -->
+    <div class="content">
+        <!-- 首頁 Section -->
+        <section id="home" class="section active">
+            <div class="category-grid">
+                <div class="category-card" data-section="wuxing">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300" alt="處理無形事">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3 class="category-title">處理無形事</h3>
+                        <p class="category-desc">詳細流程與儀式步驟說明</p>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-section="jinzhi">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300" alt="金紙類">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="category-title">金紙類</h3>
+                        <p class="category-desc">各種金紙種類與用途介紹</p>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-section="bagua">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300" alt="八卦、九色蓮花相關">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-yin-yang"></i>
+                        </div>
+                        <h3 class="category-title">八卦、九色蓮花</h3>
+                        <p class="category-desc">相關資訊與照片展示</p>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-section="xiangan">
+                    <div class="category-image">
+                        <img src="https://via.placeholder.com/400x300" alt="擺香案類">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-burn"></i>
+                        </div>
+                        <h3 class="category-title">擺香案類</h3>
+                        <p class="category-desc">香案擺放與使用說明</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 處理無形事 Section -->
+        <section id="wuxing" class="section">
+            <a class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> 返回首頁
+            </a>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>處理無形事</h2>
+                </div>
+                <div class="card-body">
+                   
+                    
+                    
+                </div>
+            </div>
+        </section>
+        
+        <!-- 金紙類 Section -->
+        <section id="jinzhi" class="section">
+            <a class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> 返回首頁
+            </a>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>金紙類</h2>
+                </div>
+                <div class="card-body">
+                    <p>各種類型的金紙介紹，包括其用途、適用場合以及正確的使用方法。</p>
+                    
+                    <div class="photo-grid" style="margin-top: 20px;">
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/300x400" alt="普通金">
+                            <div class="photo-info">
+                                <h4 class="photo-title">普通金</h4>
+                                <p>用於一般祭拜，祭祀祖先的常用金紙。適合在一般節慶或祭祀時使用。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/300x400" alt="壽金">
+                            <div class="photo-info">
+                                <h4 class="photo-title">壽金</h4>
+                                <p>用於祝壽活動，祈求長壽健康。通常在老人家生日或特定節日使用。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/300x400" alt="太極金">
+                            <div class="photo-info">
+                                <h4 class="photo-title">太極金</h4>
+                                <p>用於祭拜道教神明，具有陰陽調和之意。適合在道教節慶使用。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/300x400" alt="刈金">
+                            <div class="photo-info">
+                                <h4 class="photo-title">刈金</h4>
+                                <p>用於祭拜地府神明與祖先。在特定祭祀儀式中使用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 八卦、九色蓮花相關 Section -->
+        <section id="bagua" class="section">
+            <a class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> 返回首頁
+            </a>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>八卦、九色蓮花相關</h2>
+                </div>
+                <div class="card-body">
+                    <p>介紹八卦符號的意義以及九色蓮花的象徵與用途，並展示相關圖片。</p>
+                    
+                    <div class="photo-grid" style="margin-top: 20px;">
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="八卦圖">
+                            <div class="photo-info">
+                                <h4 class="photo-title">八卦圖示</h4>
+                                <p>傳統八卦圖及其象徵意義。八卦代表天地萬物的變化規律，用於風水與命理。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="九色蓮花">
+                            <div class="photo-info">
+                                <h4 class="photo-title">九色蓮花</h4>
+                                <p>九色蓮花的擺放與使用方式。九色蓮花代表九種不同的祈願與祝福。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="符咒應用">
+                            <div class="photo-info">
+                                <h4 class="photo-title">符咒應用</h4>
+                                <p>八卦相關符咒的使用時機與方法，包括趨吉避凶的傳統應用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 擺香案類 Section -->
+        <section id="xiangan" class="section">
+            <a class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> 返回首頁
+            </a>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>擺香案類</h2>
+                </div>
+                <div class="card-body">
+                    <p>各種香案的擺放方式和使用場合，讓您了解如何正確設置祭祀香案。</p>
+                    
+                    <div class="photo-grid" style="margin-top: 20px;">
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="家庭香案">
+                            <div class="photo-info">
+                                <h4 class="photo-title">家庭香案</h4>
+                                <p>適合家庭使用的香案擺設。說明家庭祭拜的常見香案格式與擺放位置。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="廟宇香案">
+                            <div class="photo-info">
+                                <h4 class="photo-title">廟宇香案</h4>
+                                <p>廟宇中常見的香案佈置。介紹不同神明的香案特色與差異。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <img src="https://via.placeholder.com/600x400" alt="特殊節慶香案">
+                            <div class="photo-info">
+                                <h4 class="photo-title">特殊節慶香案</h4>
+                                <p>在特殊節日與慶典使用的香案擺設，例如中元節、清明節等。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>關於本站</h3>
+                <p>本網站致力於記錄和傳播傳統祭祀文化，包括各種祭祀用品、儀式流程和相關文化知識，希望能夠幫助大家更好地了解和傳承這些珍貴的文化遺產。</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>聯絡方式</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> info@example.com</li>
+                    <li><i class="fas fa-phone"></i> (02) 1234-5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 台灣台北市</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 祭祀文化網站 | 版權所有</p>
+        </div>
+    </footer>
 
-  <script>
-    const items = [
-      { name: "地藏王菩薩金紙", price: 500 },
-      { name: "五營叩求金紙", price: 350 },
-      { name: "壽金", price: 50 },
-      { name: "四方金", price: 15 },
-      { name: "銀紙", price: 15 },
-      { name: "蓮花無座", price: 50 },
-      { name: "蓮花有座", price: 100 },
-      { name: "更衣", price: 50 },
-      { name: "白錢", price: 50 },
-      { name: "金錢", price: 50 }
-    ];
-
-    const tbody = document.getElementById("table-body");
-
-    items.forEach((item, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${item.name}</td>
-        <td>${item.price}</td>
-        <td>
-          <div class="qty-controls">
-            <button onclick="adjustQty(${index}, 1)">＋</button>
-            <input type="number" min="0" value="0" id="qty-${index}" oninput="updateSubtotal(${index})">
-            <button onclick="adjustQty(${index}, -1)">－</button>
-          </div>
-        </td>
-        <td id="subtotal-${index}">0</td>
-      `;
-      tbody.appendChild(row);
-    });
-
-    function adjustQty(index, delta) {
-      const input = document.getElementById(`qty-${index}`);
-      let current = parseInt(input.value) || 0;
-      current = Math.max(0, current + delta);
-      input.value = current;
-      updateSubtotal(index);
-    }
-
-    function updateSubtotal(index) {
-      const qty = parseInt(document.getElementById(`qty-${index}`).value) || 0;
-      const price = items[index].price;
-      const subtotal = qty * price;
-      document.getElementById(`subtotal-${index}`).textContent = subtotal;
-      updateTotal();
-    }
-
-    function updateTotal() {
-      let total = 0;
-      items.forEach((_, i) => {
-        total += parseInt(document.getElementById(`subtotal-${i}`).textContent) || 0;
-      });
-      document.getElementById("total").textContent = total;
-    }
-    function resetAll() {
-  items.forEach((_, i) => {
-    document.getElementById(`qty-${i}`).value = 0;
-    document.getElementById(`subtotal-${i}`).textContent = 0;
-  });
-  updateTotal();
-}
-  </script>
+    <script>
+        // 切換顯示指定的區塊
+        function showSection(sectionId) {
+            // 隱藏所有區塊
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 顯示目標區塊
+            document.getElementById(sectionId).classList.add('active');
+            
+            // 更新導航項目的活動狀態
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // 如果在小屏幕上，切換後隱藏菜單
+            if (window.innerWidth <= 768) {
+                document.getElementById('navContainer').classList.remove('show');
+            }
+            
+            // 滾動到頁面頂部
+            window.scrollTo(0, 0);
+        }
+        
+        // 當頁面加載完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 處理導航點擊事件
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // 處理類別卡片點擊事件
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // 處理菜單切換事件
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                document.getElementById('navContainer').classList.toggle('show');
+            });
+        });
+    </script>
 </body>
 </html>
